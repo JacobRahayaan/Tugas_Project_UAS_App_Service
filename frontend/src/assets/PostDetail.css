@@ -1,0 +1,53 @@
+/* --- Container --- */
+.post-detail-page {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 30px 25px;
+  background: #e6f2ff; /* soft blue pastel */
+  border-radius: 25px;
+  box-shadow: 0 6px 18px rgba(100, 180, 255, 0.2);
+}
+
+/* --- Judul --- */
+.post-detail-page h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* --- Thumbnail Image --- */
+.post-detail-page img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(100, 180, 255, 0.15);
+}
+
+/* --- Content --- */
+.post-detail-page p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* --- Edit Button --- */
+.btn-edit {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #3399ff;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.btn-edit:hover {
+  background: #2673cc;
+  transform: translateY(-2px);
+}

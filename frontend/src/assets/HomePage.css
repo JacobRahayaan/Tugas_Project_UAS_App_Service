@@ -1,0 +1,78 @@
+/* --- Wrapper --- */
+.home-wrapper {
+  min-height: 100vh;
+  padding: 40px;
+  background: #e0f0ff; /* soft blue pastel */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Hero Section --- */
+.hero {
+  width: 100%;
+  max-width: 900px;
+  background: linear-gradient(135deg, #f0f8ff, #d9ecff); /* soft blue gradient */
+  padding: 40px 50px;
+  border-radius: 40px;
+  text-align: center;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 20px rgba(100, 180, 255, 0.25);
+}
+
+.hero-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #333;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* --- Post Grid (Pinterest aesthetic but clean) --- */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* --- iOS-style Cards --- */
+.post-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  padding: 25px 25px 30px;
+  border-radius: 30px;
+  box-shadow: 0 8px 16px rgba(100, 180, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: 0.2s ease;
+}
+
+.post-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.post-card p {
+  margin-top: 1
+}
+.btn-create-post {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #3399ff;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 15px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.btn-create-post:hover {
+  background: #1a7ccc;
+  transform: translateY(-2px);
+}

@@ -1,0 +1,60 @@
+/* --- Container Dashboard --- */
+.dashboard-page {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 30px 25px;
+  background: #e6f2ff; /* soft blue pastel */
+  border-radius: 25px;
+  box-shadow: 0 6px 18px rgba(100, 180, 255, 0.2);
+}
+
+/* --- Judul --- */
+.dashboard-page h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* --- Form Tambah Kategori --- */
+.dashboard-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+/* --- Label --- */
+.dashboard-page form label {
+  font-weight: 600;
+  color: #333;
+}
+
+/* --- Input --- */
+.dashboard-page form input {
+  padding: 10px 15px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1px solid #b3d1ff;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.dashboard-page form input:focus {
+  border-color: #3399ff;
+  box-shadow: 0 3px 8px rgba(51, 153, 255, 0.2);
+}
+
+/* --- Button --- */
+.dashboard-page form button {
+  padding: 10px 15px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: #3399ff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0
+}

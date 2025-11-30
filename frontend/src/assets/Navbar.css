@@ -1,0 +1,29 @@
+/* --- Navbar Container --- */
+.navbar {
+  padding: 15px 30px;
+  background: #9dc8f3; /* soft blue */
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 120, 255, 0.2);
+  margin-bottom: 30px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* --- Navbar Links --- */
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 12px;
+  transition: 0.2s ease;
+}
+
+.navbar a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}

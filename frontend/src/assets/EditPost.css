@@ -1,0 +1,68 @@
+/* --- Container EditPost --- */
+.edit-post-page {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 35px 25px;
+  background: #e6f2ff; /* soft blue pastel */
+  border-radius: 25px;
+  box-shadow: 0 6px 18px rgba(100, 180, 255, 0.2);
+  text-align: center;
+}
+
+/* --- Judul --- */
+.edit-post-page h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* --- Form --- */
+.edit-post-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* --- Input & Textarea --- */
+.edit-post-page input,
+.edit-post-page textarea {
+  padding: 12px 15px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1px solid #b3d1ff;
+  outline: none;
+  transition: 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edit-post-page input:focus,
+.edit-post-page textarea:focus {
+  border-color: #3399ff;
+  box-shadow: 0 3px 8px rgba(51, 153, 255, 0.2);
+}
+
+/* --- Textarea --- */
+.edit-post-page textarea {
+  resize: vertical;
+}
+
+/* --- Button --- */
+.edit-post-page button {
+  padding: 12px 15px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: #3399ff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  margin-top: 8px;
+}
+
+.edit-post-page button:hover {
+  background: #2673cc;
+  transform: translateY(-2px);
+}

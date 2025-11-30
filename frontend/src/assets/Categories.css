@@ -1,0 +1,54 @@
+/* --- Container --- */
+.categories-page {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px 25px;
+  background: #e6f2ff; /* soft blue pastel */
+  border-radius: 25px;
+  box-shadow: 0 6px 18px rgba(100, 180, 255, 0.2);
+}
+
+/* --- Judul --- */
+.categories-page h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* --- Category List --- */
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+/* --- Category Card --- */
+.category-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 6px 14px rgba(100, 180, 255, 0.15);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(100, 180, 255, 0.25);
+}
+
+.category-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.category-card p {
+  font-size: 14px;
+  color: #555;
+}

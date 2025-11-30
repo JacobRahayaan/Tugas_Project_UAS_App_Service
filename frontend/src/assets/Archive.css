@@ -1,0 +1,18 @@
+/* --- Container Archive --- */
+.archive-page {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 35px 25px;
+  background: #e6f2ff; /* soft blue pastel */
+  border-radius: 25px;
+  box-shadow: 0 6px 18px rgba(100, 180, 255, 0.2);
+  text-align: center;
+}
+
+/* --- Judul --- */
+.archive-page h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 25px;
+}

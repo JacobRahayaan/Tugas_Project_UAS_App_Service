@@ -1,0 +1,61 @@
+/* --- Container CategoryDetail --- */
+.category-detail-page {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 30px 25px;
+  background: #e6f2ff; /* soft blue pastel */
+  border-radius: 25px;
+  box-shadow: 0 6px 18px rgba(100, 180, 255, 0.2);
+}
+
+/* --- Judul Kategori --- */
+.category-detail-page h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* --- Subjudul Artikel --- */
+.category-detail-page h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* --- Artikel List --- */
+.category-detail-page ul {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0;
+  list-style: none;
+}
+
+/* --- Artikel Card --- */
+.category-detail-page li {
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(100, 180, 255, 0.15);
+  transition: 0.2s ease;
+}
+
+.category-detail-page li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(100, 180, 255, 0.25);
+}
+
+.category-detail-page li h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.category-detail-page li p {
+  font-size: 15px;
+  color: #555;
+}
