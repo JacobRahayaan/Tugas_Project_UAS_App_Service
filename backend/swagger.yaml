@@ -1,0 +1,362 @@
+openapi: 3.0.0
+info:
+  title: API Blog
+  version: 1.0.0
+  description: Dokumentasi API untuk autentikasi & manajemen postingan.
+
+servers:
+  - url: http://localhost:5000/api
+    description: Local Development Server
+
+tags:
+  - name: Auth
+    description: Endpoint untuk registrasi dan login pengguna
+  - name: Posts
+    description: Endpoint untuk membuat, membaca, mengedit, dan menghapus postingan
+
+
+paths:
+  # ============================
+  # AUTH
+  # ============================
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Registrasi user baru
+      description: Membuat akun user baru dengan mengirimkan name, email, dan password.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - email
+                - password
+              properties:
+                name:
+                  type: string
+                  example: John Doe
+                email:
+                  type: string
+                  example: johndoe@example.com
+                password:
+                  type: string
+                  example: secret123
+      responses:
+        "201":
+          description: Registrasi berhasil
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Registrasi berhasil!
+                  data:
+                    $ref: "#/components/schemas/UserResponse"
+        "400":
+          description: Email sudah digunakan
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Terjadi kesalahan server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login user
+      description: Login menggunakan email dan password untuk mendapatkan token JWT.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  example: johndoe@example.com
+                password:
+                  type: string
+                  example: secret123
+      responses:
+        "200":
+          description: Login berhasil
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Login berhasil!
+                  token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+                  data:
+                    $ref: "#/components/schemas/UserResponse"
+        "400":
+          description: Email tidak ditemukan atau password salah
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Terjadi kesalahan server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+
+
+  # ============================
+  # POSTS
+  # ============================
+  /posts:
+    get:
+      tags:
+        - Posts
+      summary: Ambil semua post (public)
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            example: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            example: 10
+      responses:
+        "200":
+          description: Daftar post berhasil diambil
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  current_page:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 5
+                  total_posts:
+                    type: integer
+                    example: 42
+                  count:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/PostResponse"
+
+    post:
+      tags:
+        - Posts
+      summary: Membuat post baru (private)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - title
+                - content
+              properties:
+                title:
+                  type: string
+                  example: Judul Postingan Baru
+                content:
+                  type: string
+                  example: Ini adalah isi post...
+                image:
+                  type: string
+                  format: binary
+      responses:
+        "201":
+          description: Post berhasil dibuat
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PostResponse"
+        "500":
+          description: Terjadi kesalahan server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+
+
+  /posts/{id}:
+    get:
+      tags:
+        - Posts
+      summary: Ambil detail satu post
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Post ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PostResponse"
+        "404":
+          description: Post tidak ditemukan
+
+    put:
+      tags:
+        - Posts
+      summary: Update post (private)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Judul Update
+                content:
+                  type: string
+                  example: Konten yang diperbarui
+      responses:
+        "200":
+          description: Post berhasil diperbarui
+        "403":
+          description: Tidak punya izin
+        "404":
+          description: Post tidak ditemukan
+
+    delete:
+      tags:
+        - Posts
+      summary: Hapus post (private)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Post berhasil dihapus
+        "403":
+          description: Tidak punya izin
+        "404":
+          description: Post tidak ditemukan
+
+
+# ============================
+# COMPONENTS
+# ============================
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 65afc92d8a7acd40bcd12345
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          example: johndoe@example.com
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: Terjadi kesalahan server
+
+    PostResponse:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 65afc92d8a7acd40bcdf8888
+        title:
+          type: string
+          example: Judul Postingan
+        content:
+          type: string
+          example: Ini adalah isi post...
+        imageUrl:
+          type: string
+          example: uploads/1700000000-image.png
+        author:
+          type: object
+          properties:
+            _id:
+              type: string
+              example: 65afc92d8a7acd40bcd99999
+            name:
+              type: string
+              example: John Doe
+            email:
+              type: string
+              example: johndoe@example.com
+        createdAt:
+          type: string
+          example: 2025-01-01T10:00:00.000Z
+        updatedAt:
+          type: string
+          example: 2025-01-02T12:30:00.000Z

@@ -11,7 +11,9 @@ router.get("/", postController.getPosts);
 // GET post by ID (public)
 router.get("/:id", postController.getPostById);
 
+// Private routes
 // CREATE POST (with image)
+// POST http://localhost:5000/api/posts
 router.post(
   "/",
   authMiddleware,
@@ -20,9 +22,11 @@ router.post(
 );
 
 // UPDATE post (private)
+// PUT http://localhost:5000/api/posts/:id
 router.put("/:id", authMiddleware, postController.updatePost);
 
 // DELETE post (private)
+// DELETE http://localhost:5000/api/posts/:id
 router.delete("/:id", authMiddleware, postController.deletePost);
 
 module.exports = router;
